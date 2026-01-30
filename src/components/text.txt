@@ -1,0 +1,54 @@
+    <div className=" relative w-full h-20 ">
+      <div className=" absolute w-115 h-10 bg-white mx-10 my-5 rounded-4xl overflow-hidden">
+        <input value={city} onChange={(e) => setcity(e.target.value)} className="h-full w-full px-4 outline-none text-xl pb-1 font-semibold " type='text' placeholder='search the city'/>
+      </div>
+      <div className=" absolute right-12 top-5 h-10 w-10 rounded-[50%] flex justify-center items-center bg-white">
+        <button onClick={Search} className="h-full w-full border-none outline-none text-2xl flex font-bold justify-center items-center">
+            <IoSearch />
+        </button>
+      </div>
+      <div className=' absolute w-full h-173 bg-amber-500 mt-27  ' >
+        {error && <p  className=" h-full w-full text-2xl font-bold flex justify-center items-center" >{error}</p>}
+       </div>{
+          data && data.weather &&
+          <div className=" absolute  main h-full w-full bg-red-300 flex justify-center items-center" > 
+            <div className="absolute left-10 border-2 rounded-xl w-50 h-40 top-5 flex items-center flex-col ">
+              <img className=" font-bold w-30 h-30" src ={ ` https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt=""></img>
+              <h3 className=" absolute text-xl font-bold bottom-5" > {data.weather[0].description}</h3>
+            </div>
+          </div>   
+    </div>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+ async function Search() {
+  
+ 
+   // setdata([...city,{ city}])
+    setcity(city)
+    seterror(null);
+    try{
+      let response = await fetch(URL);
+      let output = await response.json();
+      if(response.ok){
+        setdata(output);
+         console.log(output)
+      }else{
+        seterror("Data not found")
+        setdata(null)
+      }
+
+    }
+    catch{
+      
+    }
+    
+
+}
