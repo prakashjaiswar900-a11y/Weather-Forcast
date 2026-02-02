@@ -9,7 +9,7 @@ import { CiTempHigh } from "react-icons/ci";
 import { useEffect } from "react";
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import Sunrise from './assets/img/sunrise.jsx';
+import Sunrise from './assets/img/Sunrise.jsx';
 import Sunset from './assets/img/Sunset.jsx';
 const Nav = () => {
     const [city ,setcity] = useState("Mumbai")
